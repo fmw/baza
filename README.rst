@@ -25,13 +25,6 @@ and store it somewhere on your filesystem (e.g. ~/bin in your homedirectory on
 UNIX or C:\\ on Windows). Clojure uses the Java Virtual Machine as a host
 platform, so a copy of the JVM is required to run the application.
 
-Developers need `Leiningen`_ to play with the code. You can check out this Git
-repository and fire up a Clojure REPL for the application thusly:
-    
-    git clone https://github.com/fmw/baza.git
-    cd baza
-    lein repl
-
 Usage instructions
 ==================
 
