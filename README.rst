@@ -45,7 +45,9 @@ Here is the command to execute the application:
     --mp-uri "http://www.museumplan.nl/mbaz/partners/index.php"
 
 Nota bene: the line breaks were added for readability and should be removed;
-the command itself is one big line!
+the command itself is one big line! The options are separated by spaces.  When
+copy and pasting, make sure these spaces are preserved (otherwise the
+application will return an "Unknown option" error).
 
 To use the application you should edit the command and add your own login for
 Museumplan.nl and Google Calendar. The
@@ -58,7 +60,7 @@ C:\\baza-1.0.0-SNAPSHOT-standalone.jar on Microsoft Windows).
 Feel free to contact me if you have any questions.
 
 Copyright 2011, F.M. (Filip) de Waard (fmw@vix.io).
-Distributed under the Apache License, version 2.
+Distributed under the `Apache License, version 2.0`_.
 
 .. _`Museumplan.nl`: http://www.museumplan.nl/
 .. _`Museum Beelden aan Zee`: http://www.beeldenaanzee.nl/
@@ -67,3 +69,4 @@ Distributed under the Apache License, version 2.
 .. _`baza-1.0.0-SNAPSHOT-standalone.jar`: https://github.com/fmw/baza/raw/master/baza-1.0.0-SNAPSHOT-standalone.jar
 .. _`Leiningen`: https://github.com/technomancy/leiningen
 .. _`relevant Microsoft Support page`: http://support.microsoft.com/kb/313565
+.. _`Apache License, version 2.0`: http://www.apache.org/licenses/LICENSE-2.0.html
