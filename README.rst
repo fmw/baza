@@ -20,7 +20,7 @@ Installation
 ============
 
 As a user, you only need to download the file
-`baza-1.0.0-SNAPSHOT-standalone.jar`_ (which includes all required libraries)
+`baza.jar`_ (which includes all required libraries)
 and store it somewhere on your filesystem (e.g. ~/bin in your homedirectory on
 UNIX or C:\\ on Windows). Clojure uses the Java Virtual Machine as a host
 platform, so a copy of the JVM is required to run the application.
@@ -36,7 +36,7 @@ of the process on the `relevant Microsoft Support page`_).
 
 Here is the command to execute the application:
 
-    java -jar /path/to/baza-1.0.0-SNAPSHOT-standalone.jar
+    java -jar /path/to/baza.jar
     --google-username "your.address@gmail.com"
     --google-password "your.password"
     --calendar-uri "https://www.google.com/calendar/feeds/your.address@gmail.com/private/full"
@@ -51,10 +51,10 @@ application will return an "Unknown option" error).
 
 To use the application you should edit the command and add your own login for
 Museumplan.nl and Google Calendar. The
-"/path/to/baza-1.0.0-SNAPSHOT-standalone.jar" value should be changed to
+"/path/to/baza.jar" value should be changed to
 reflect the location of the file on your filesystem (e.g.
-~/bin/baza-1.0.0-SNAPSHOT-standalone.jar on UNIX or
-C:\\baza-1.0.0-SNAPSHOT-standalone.jar on Microsoft Windows).
+~/bin/baza.jar on UNIX or
+C:\\baza.jar on Microsoft Windows).
 
 
 Feel free to contact me if you have any questions.
@@ -66,7 +66,7 @@ Distributed under the `Apache License, version 2.0`_.
 .. _`Museum Beelden aan Zee`: http://www.beeldenaanzee.nl/
 .. _`Clojure`: http://clojure.org/
 .. _`Enlive`: https://github.com/cgrand/enlive
-.. _`baza-1.0.0-SNAPSHOT-standalone.jar`: https://github.com/downloads/fmw/baza/baza.jar
+.. _`baza.jar`: https://github.com/downloads/fmw/baza/baza.jar
 .. _`Leiningen`: https://github.com/technomancy/leiningen
 .. _`relevant Microsoft Support page`: http://support.microsoft.com/kb/313565
 .. _`Apache License, version 2.0`: http://www.apache.org/licenses/LICENSE-2.0.html
