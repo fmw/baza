@@ -66,7 +66,7 @@ Distributed under the `Apache License, version 2.0`_.
 .. _`Museum Beelden aan Zee`: http://www.beeldenaanzee.nl/
 .. _`Clojure`: http://clojure.org/
 .. _`Enlive`: https://github.com/cgrand/enlive
-.. _`baza-1.0.0-SNAPSHOT-standalone.jar`: https://github.com/fmw/baza/raw/master/baza-1.0.0-SNAPSHOT-standalone.jar
+.. _`baza-1.0.0-SNAPSHOT-standalone.jar`: https://github.com/downloads/fmw/baza/baza.jar
 .. _`Leiningen`: https://github.com/technomancy/leiningen
 .. _`relevant Microsoft Support page`: http://support.microsoft.com/kb/313565
 .. _`Apache License, version 2.0`: http://www.apache.org/licenses/LICENSE-2.0.html
