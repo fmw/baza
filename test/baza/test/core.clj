@@ -37,7 +37,10 @@
   (testing "test if date strings are formatted correctly."
     (is (=
           (date-string {:day 1 :month 5 :year 2011} "09:00:00")
-          "2011-05-01T09:00:00+02:00"))))
+          "2011-05-01T09:00:00+02:00"))
+    (is (=
+          (date-string {:day 31 :month 5 :year 2011} "09:00:00")
+          "2011-05-31T09:00:00+02:00"))))
 
 (deftest test-create-people-html
   (testing "test if HTML code for a people list is created correctly."

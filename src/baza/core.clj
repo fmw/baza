@@ -115,7 +115,7 @@
 (defn date-string [date time-string]
   (let [offset-milli (.getOffset
                        (java.util.TimeZone/getTimeZone "Europe/Amsterdam")
-                       1 (:year date) (:month date) (:day date) 1 1)
+                       1 (:year date) (- (:month date) 1) (:day date) 1 1)
         offset (cond
                  (= offset-milli 3600000)
                    "+01:00"
