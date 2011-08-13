@@ -31,7 +31,11 @@
     (is (= (parse-date "di 3 september 2011") {:day 3 :month 9 :year 2011}))
     (is (= (parse-date "do 9 oktober 2011") {:day 9 :month 10 :year 2011}))
     (is (= (parse-date "za 4 november 2011") {:day 4 :month 11 :year 2011}))
-    (is (= (parse-date "ma 25 december 2011") {:day 25 :month 12 :year 2011}))))
+    (is (= (parse-date "ma 25 december 2011") {:day 25 :month 12 :year 2011}))
+
+    (is (thrown-with-msg? Exception
+          #"requires a non-empty string input date argument"
+          (parse-date "")))))
 
 (deftest test-create-date-string
   (testing "test if date strings are formatted correctly."

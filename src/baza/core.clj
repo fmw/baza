@@ -17,16 +17,21 @@
 (ns baza.core
   (:gen-class)
   (:use clojure.contrib.command-line)
-  (:use [clojure.string :only (split blank?)])
-  (:use [clj-time.core :only (date-time from-time-zone time-zone-for-offset)])
-  (:use [hiccup.core :only (html)])
-  (:require [net.cgrand.enlive-html :as html])
-  (:require [clj-http.client :as http-client])
+  (:use [clojure.string :only (split blank?)]
+        [clj-time.core :only (date-time from-time-zone time-zone-for-offset)]
+        [hiccup.core :only (html)])
+  (:require [net.cgrand.enlive-html :as html]
+            [clj-http.client :as http-client]
+            [clojure.contrib [error-kit :as kit]])
   (:import (java.net URL)
            (com.google.gdata.client.calendar CalendarService CalendarQuery)
            (com.google.gdata.data
              Feed Person DateTime PlainTextConstruct HtmlTextConstruct)
            (com.google.gdata.data.extensions EventEntry When)))
+
+(kit/deferror EmptyDateInput [] []
+  {:msg "(parse-date) requires a non-empty string input date argument"
+   :unhandled (kit/throw-msg Exception)})
 
 (defn process-morning [row]
   {:status (html/text (first (html/select row
@@ -48,10 +53,10 @@
      :afternoon (map process-afternoon rows)})
 
 (defn process-week [data]
-  (map process-day (partition 9 (rest
-     (html/select
-       (html/html-resource (java.io.StringReader. data))
-       [[:div.standardborder] [:tr]])))))
+  (let [rows (html/select (html/html-resource (java.io.StringReader. data))
+                          [[:div.standardborder] [:tr]])
+        num-partners-per-day (/ (dec (count rows)) 6)]
+    (map process-day (partition num-partners-per-day (rest rows)))))
 
 (defn get-weeks [data]
   (map #(:value (:attrs %))
@@ -69,23 +74,25 @@
         (:body (http-client/get uri {:basic-auth [username password]})))))
 
 (defn parse-date [date]
-  (let [date-words (split date #" ")
-        month-full (nth date-words 2)]
-    {:day (Integer/parseInt (nth date-words 1))
-     :year (Integer/parseInt (nth date-words 3))
-     :month (cond
-              (= month-full "januari") 1
-              (= month-full "februari") 2
-              (= month-full "maart") 3
-              (= month-full "april") 4
-              (= month-full "mei") 5
-              (= month-full "juni") 6
-              (= month-full "juli") 7
-              (= month-full "augustus") 8
-              (= month-full "september") 9
-              (= month-full "oktober") 10
-              (= month-full "november") 11
-              (= month-full "december") 12)}))
+  (if-not (blank? date)
+    (let [date-words (split date #" ")
+          month-full (nth date-words 2)]
+      {:day (Integer/parseInt (nth date-words 1))
+       :year (Integer/parseInt (nth date-words 3))
+       :month (cond
+               (= month-full "januari") 1
+               (= month-full "februari") 2
+               (= month-full "maart") 3
+               (= month-full "april") 4
+               (= month-full "mei") 5
+               (= month-full "juni") 6
+               (= month-full "juli") 7
+               (= month-full "augustus") 8
+               (= month-full "september") 9
+               (= month-full "oktober") 10
+               (= month-full "november") 11
+               (= month-full "december") 12)})
+  (kit/raise EmptyDateInput)))
 
 (defn create-people-html [people-raw]
   (let [people (map #(if (blank? (:status %))
