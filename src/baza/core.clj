@@ -53,10 +53,11 @@
      :afternoon (map process-afternoon rows)})
 
 (defn process-week [data]
-  (let [rows (html/select (html/html-resource (java.io.StringReader. data))
-                          [[:div.standardborder] [:tr]])
-        num-partners-per-day (/ (dec (count rows)) 6)]
-    (map process-day (partition num-partners-per-day (rest rows)))))
+  ; skip the first row, as it just contains field names
+  (let [rows (rest (html/select (html/html-resource (java.io.StringReader. data))
+                                [[:div.standardborder] [:tr]]))
+        num-partners-per-event (/ (count rows) 6)]
+    (map process-day (partition num-partners-per-event rows))))
 
 (defn get-weeks [data]
   (map #(:value (:attrs %))
