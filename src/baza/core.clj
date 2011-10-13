@@ -160,14 +160,14 @@
 (defn create-day-planning [day-map]
   (let [morning-entry (create-entry {:name "F.M. de Waard" :email "fmw@vix.io"}
                                     (parse-date (:date day-map))
-                                    "09:00:00"
-                                    "12:00:00"
+                                    "11:00:00"
+                                    "14:00:00"
                                     "BaZ rooster ochtend"
                                     (create-people-html (:morning day-map)))
         afternoon-entry (create-entry {:name "F.M. de Waard"
                                        :email "fmw@vix.io"}
                                     (parse-date (:date day-map))
-                                    "12:00:00"
+                                    "14:00:00"
                                     "17:00:00"
                                     "BaZ rooster middag"
                                     (create-people-html (:afternoon day-map)))]
